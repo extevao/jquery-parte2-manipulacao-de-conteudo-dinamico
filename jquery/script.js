@@ -1,4 +1,25 @@
-var aposInicializado = function() {
+$(aposInicializado);
+
+$('.remove-item').click(removeItem);
+
+
+function removeItem(event) {
+    event.preventDefault();
+
+    var self = $(this);
+
+    self.closest('tr').remove();
+
+
+    var quantidadeComoString = $('#quantidade-de-itens').text();
+    var atual = parseInt(quantidadeComoString);
+    var novaQuantidade = atual -1;
+    $('#quantidade-de-itens').text(novaQuantidade);
+
+
+}
+
+function aposInicializado() {
     var items = $(".item-total");
 
     var total = 0;
@@ -10,4 +31,3 @@ var aposInicializado = function() {
     $("#valor-total").text(total);
     $("#quantidade-de-itens").text(items.length);
 };
-$(aposInicializado);
