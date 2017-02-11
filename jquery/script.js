@@ -1,33 +1,27 @@
-$(aposInicializado);
-
-$('.remove-item').click(removeItem);
-
-
-function removeItem(event) {
-    event.preventDefault();
-
-    var self = $(this);
-
-    self.closest('tr').remove();
-
-
-    var quantidadeComoString = $('#quantidade-de-itens').text();
-    var atual = parseInt(quantidadeComoString);
-    var novaQuantidade = atual -1;
-    $('#quantidade-de-itens').text(novaQuantidade);
-
-
-}
-
-function aposInicializado() {
+var atualizaDados = function() {
     var items = $(".item-total");
-
     var total = 0;
     for (var i = 0; i < items.length; i++) {
-        var item = $(items[i]).text();
-        var valor = parseFloat(item);
-        total += valor;
+        var conteudo = $(items[i]).text();
+        var preco = parseFloat(conteudo);
+        total += preco;
     }
     $("#valor-total").text(total);
     $("#quantidade-de-itens").text(items.length);
 };
+
+var removeItem = function(event) {
+    event.preventDefault();
+
+    var self = $(this);
+    self.closest("tr").remove();
+    atualizaDados();
+};
+
+var aposInicializado = function() {
+
+    $(".remove-item").click(removeItem);
+    atualizaDados();
+};
+
+$(aposInicializado);
