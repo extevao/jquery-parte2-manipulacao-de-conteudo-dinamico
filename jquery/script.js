@@ -8,6 +8,7 @@ var atualizaDados = function() {
     }
     $("#valor-total").text(total);
     $("#quantidade-de-itens").text(items.length);
+    
 };
 
 var removeItem = function(event) {
